@@ -39,6 +39,7 @@ SET( SRC_FILES
   src/dsr_control_node.cpp
 )
 
+# NDKClient NDKMessage NDKServer NDKSocket NDKUser NDKUserManager CRC KISA_SEED_ECB DRFL NDKHandler
 LINK_LIBRARIES(DRFL PocoFoundation PocoNet)
 
 if($ENV{ROS_DISTRO} STREQUAL "kinetic")
@@ -49,6 +50,8 @@ if($ENV{ROS_DISTRO} STREQUAL "kinetic")
     LINK_DIRECTORIES ("${COMMON_LIB_FILES}/$ENV{ROS_DISTRO}/x86_32")
   endif()
 elseif($ENV{ROS_DISTRO} STREQUAL "melodic")
+  LINK_DIRECTORIES ("${COMMON_LIB_FILES}/$ENV{ROS_DISTRO}/x86_64")
+elseif($ENV{ROS_DISTRO} STREQUAL "noetic")
   LINK_DIRECTORIES ("${COMMON_LIB_FILES}/$ENV{ROS_DISTRO}/x86_64")
 else()
     message("Unknown ROS distro:")
